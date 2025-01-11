@@ -9,6 +9,8 @@ secrets.env
 __pycache__/
 *.pyc
 *.pyo
+venv/bin/
+venv/lib/python3.9/site-packages/
 
 # Ignore VS Code settings
 .vscode/
