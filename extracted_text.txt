@@ -1,0 +1,1267 @@
+Page 1 Text:
+arXiv:cond-mat/0102536v1  [cond-mat.str-el]  28 Feb 2001
+Impact of Electron-Electron Cusp on Conﬁguration Interaction Energies
+David Prendergast,a) M. Nolan,b) Claudia Filippi,a) Stephen Fahy,a) and J.C. Greerb)
+a)Department of Physics and b)NMRC, University College, Cork, Ireland
+(November 26, 2024)
+The eﬀect of the electron-electron cusp on the convergence of conﬁguration interaction (CI) wave
+functions is examined. By analogy with the pseudopotential approach for electron-ion interactions,
+an eﬀective electron-electron interaction is developed which closely reproduces the scattering of
+the Coulomb interaction but is smooth and ﬁnite at zero electron-electron separation. The exact
+many-electron wave function for this smooth eﬀective interaction has no cusp at zero electron-
+electron separation. We perform CI and quantum Monte Carlo calculations for He and Be atoms,
+both with the Coulomb electron-electron interaction and with the smooth eﬀective electron-electron
+interaction. We ﬁnd that convergence of the CI expansion of the wave function for the smooth
+electron-electron interaction is not signiﬁcantly improved compared with that for the divergent
+Coulomb interaction for energy diﬀerences on the order of 1 mHartree. This shows that, contrary to
+popular belief, description of the electron-electron cusp is not a limiting factor, to within chemical
+accuracy, for CI calculations.
+I. INTRODUCTION
+The primary diﬃculty in solving the Schr¨odinger equa-
+tion for many-electron systems arises from the presence
+of the electron-electron interaction, which results in a
+problem non-separable in the electron coordinates. Con-
+ﬁguration interaction (CI) calculations use an expansion
+of the many-body wave function in conﬁguration state
+functions (CSF) given by spin coupled sums of determi-
+nants built from single-particle orbitals. One of the cen-
+tral diﬃculties for the convergence of the CI expansion
+is thought to arise from the behaviour of the Coulomb
+interaction at small electron-electron separations [1–10].
+The many-body wave function must have an appropriate
+cusp at electron coalescences so that the inﬁnite Coulomb
+interaction term is exactly cancelled by an opposite di-
+vergence of the kinetic energy [11].
+It is often stated in the literature that failure of the
+CI expansion to reproduce the correct electron cusp, i.e.
+the short-range part of the Coulomb hole, leads to a slow
+convergence in the energy with respect to the number
+of CSF’s [3].
+While this has been shown [2,5] in the
+asymptotic regime (i.e. very large angular momentum l
+and energy errors of the order of 10−6 Hartree), it is not
+clear that it applies in the practical regime (mHartree
+accuracy) for multi-electron systems.
+Explicit inclusion of terms in the interelectronic dis-
+tance (r12 methods) [12,4] or the use of correlated (gem-
+inal) Gaussian basis functions [13] signiﬁcantly improve
+the convergence of a CI calculation. For the helium atom,
+the inclusion of r12 terms [5] yields an expansion in partial
+waves converging asymtotically as l−6 or better, instead
+of a slow l−3, where l is the maximum angular momentum
+in the expansion. Baker et al. [14] also showed that using
+basis functions with the same analytic structure as the
+true wave function (depending on powers and logarithms
+of r12) leads to a reduced expansion length. The suc-
+cess of methods explicitly including r12 terms has been
+attributed to their correct description of the short-range
+part of the interaction.
+A completely diﬀerent point of view, taken by Gilbert
+in 1963 [15], is that the diﬃculty of CI wave functions in
+describing short-range eﬀects of the cusp are energetically
+unimportant and that the beneﬁt of the explicitly corre-
+lated approach is that the entire Coulomb hole, with a
+size on the order of the atomic orbitals, is much easier to
+describe in terms of interelectronic coordinates. Gilbert’s
+suggestion appears to have received little attention and
+the idea that smoothing out the Coulomb potential and
+removing the cusp altogether will automatically lead to
+an improved CI convergence has been stated in the liter-
+ature [16,9]. However, no systematic studies of the eﬀect
+of the electron cusp on CI energy convergence at the level
+of interest for chemical accuracy (1 mHartree for total
+energies) have been presented.
+In this paper, we explore whether a signiﬁcant im-
+provement in the convergence of the CI expansion is
+obtained when the true Hamiltonian is replaced by one
+which has a smooth and ﬁnite electron-electron interac-
+tion (pseudo-interaction) at short distances and, conse-
+quently, smooth eigenfunctions with no cusps.
+Surprisingly, in calculations for the He and Be atoms,
+we ﬁnd that removing the divergence of the Coulomb
+potential at electron-electron coalescences does not sig-
+niﬁcantly reduce the length of the CI expansion, thereby
+substantiating the argument put forward by Gilbert [15]
+that the slow convergence should be attributed to dif-
+ﬁculties in describing, not the interelectron cusp, but
+the intermediate-range electronic correlation. The poor
+treatment of the interelectron cusp in the CI expansion is
+not a limiting factor at the mHartree level of accuracy on
+the total energy. To further conﬁrm this result, we calcu-
+late the energy within quantum Monte Carlo (QMC) for
+the true electron-electron interaction with accurate wave
+functions which explicitly contain interelectronic coordi-
+nates, and then deliberately remove the short-range cor-
+1
+
+Page 2 Text:
+relation term related to the cusp, keeping other parts
+of the wave function unchanged. We ﬁnd that the re-
+moval of the cusp has a very small eﬀect on the vari-
+ational energy.
+Finally, we demonstrate that the con-
+vergence behavior of the CI expansion as a function of
+angular momentum in the range practical for many ap-
+plications (l < 6) is largely unaﬀected by the smoothing
+of the electron cusps. Therefore, the angular momentum
+convergence numerically observed by other authors [7] is
+related to problems associated with intermediate range
+correlations, not the cusp region as such.
+In Sec. II, we describe the pseudopotential used for
+the electron-electron interaction and brieﬂy present the
+QMC and CI methods. In Sec. III, we report the QMC
+and CI energies for He and Be atoms using the true and
+pseudo electron interaction.
+In Appendices A and B,
+we discuss the numerical generation and accuracy of the
+electron pseudo-interaction, and in Appendix C we deﬁne
+a short-range correlation term which can be associated
+with it. In Appendix D, we brieﬂy discuss the evaluation
+of two-electron integrals for the pseudo-interaction.
+II. COMPUTATIONAL METHODS
+A. Electron-electron Pseudo-interaction
+When modifying the short-distance electron-electron
+interaction, we wish to keep the intermediate- and long-
+range correlation properties of the many-body eigen-
+states unchanged. This will allow us to isolate systemati-
+cally the eﬀects of the short-range cusp-like behaviour in
+the wave function. To achieve this, our new (smooth) in-
+teraction should ideally have electron-electron scattering
+properties identical to the true interaction for all ener-
+gies. If this were the case, all many-electron eigenvalues
+would be identical for both interactions. While this ideal
+cannot be exactly realized, we expect that a potential
+with the same scattering properties as the true interac-
+tion over a suﬃciently wide range of scattering energies
+will give many-electron eigenvalues very close to the true
+ones.
+This goal for electron-electron scattering is analogous
+to the problem of electron-ion scattering addressed in the
+well-established pseudopotential method [17]. In that ap-
+proach, the aim is to produce a smooth electron-ion po-
+tential which reproduces the single-particle eigenvalues
+of the true system over a range of energies, and has the
+same single-particle wave functions outside some suitably
+chosen cut-oﬀradius rc. Such pseudopotentials are gen-
+erated for the isolated atom but may then be used with a
+high level of accuracy in molecules and solids. In solids,
+the smoothness of the potential greatly improves the con-
+vergence of plane-wave expansions for single-particle or-
+bitals [18].
+Following the success of norm-conserving pseudopo-
+tential methods in the context of the electron-ion scat-
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+r (a.u.)
+0
+2
+4
+6
+8
+10
+interaction energy (Hartree)
+Vps interaction
+Verf interaction
+Coulomb interaction
+FIG. 1.
+Norm-conserving electron pseudo-interaction
+(solid line) and smooth interaction Verf (dashed line), each
+with a cut-oﬀradius rc = 0.25 a.u. (indicated by a vertical
+dotted line), and the true 1/r interaction (dash-dot line), as
+functions of the electron separation r.
+tering problem, we generate a norm-conserving pseudo-
+interaction for the two-electron scattering problem,
+which will replace the true e2/r electron-electron interac-
+tion inside a cut-oﬀradius rc. Since the electron-electron
+interaction is repulsive and has no bound states for an
+isolated pair of electrons, we use, with some minor mod-
+iﬁcations, the generalized norm-conserving method de-
+vised by Hamann [19] to generate pseudopotentials for
+electron-ion interactions at unbound, scattering state en-
+ergies. The numerical details of this approach are pre-
+sented in Appendix A.
+In Fig. 1, we show a pseudo-interaction potential Vps
+generated by this approach, along with the true e2/r in-
+teraction and a smooth but not norm-conserving inter-
+action, Verf(r) = e2erf(r/rc)/r, as used by Savin and
+coworkers [20] in a diﬀerent context. In Appendix B, the
+accuracy of such scattering potentials in reproducing the
+exact eigenstate energies is analyzed qualitatively using
+ﬁrst-order perturbation theory. In Appendix C, we de-
+ﬁne a short-range inter-electronic correlation term, which
+can be directly related to the replacement of the divergent
+Coulomb interaction with a smooth norm-conserving in-
+teraction.
+B. Quantum Monte Carlo Calculations
+We employ QMC methods to determine accurate en-
+ergies both for the Coulomb and the pseudo-interaction.
+The wave functions Ψ used in QMC are of the form given
+in Ref. [21] and explicitly depend on the inter-electronic
+2
+
+Page 3 Text:
+coordinates.
+They include parameterized terms to de-
+scribe electron-nucleus, electron-electron and electron-
+electron-nucleus correlation, as follows:
+Ψ =
+ X
+n
+dnD↑
+nD↓
+n
+!
+J(ri, rj, rij) .
+(1)
+D↑
+n and D↓
+n are the Slater determinants of single particle
+orbitals for the spin-up and down electrons, respectively,
+and J is a Jastrow factor of the form,
+J(ri, rj, rij) =
+Y
+i
+exp (Ai)
+Y
+ij
+exp (Bij)
+Y
+ij
+exp (Pij), (2)
+where A is an electron-nuclear term (which could be
+omitted if a suﬃciently large single particle basis were
+used in constructing the determinantal part), B is an
+electron-electron term incorporating the cusp at small
+rij, and P is a smooth function of the electron coordi-
+nates, ri and rj, as discussed in detail in Ref. [21]. For
+the pseudo-interaction calculations, the B term is omit-
+ted.
+The parameters in the determinant and Jastrow
+factor are optimized within QMC using the variance min-
+imisation method [22] and the accuracy is tested at the
+variational level. The wave function is then used in dif-
+fusion Monte Carlo (DMC), which produces the best en-
+ergy within the ﬁxed-node approximation (i.e. the lowest-
+energy state with the same nodes as the trial wave func-
+tion).
+For a given interaction, this method yields the ex-
+act eigenvalue (within statistical sampling noise) for the
+ground state of the He isoelectronic series since the sin-
+glet ground state wave function of a two-electron system
+is nodeless. For He, only one determinant is used in the
+wave function. For the Be atom, the 2s and 2p conﬁgura-
+tions are included in the determinantal part of the wave
+function and DMC gives the best energy subject to the
+ﬁxed-node condition. To isolate the eﬀect of the pseudo-
+interaction from the ﬁxed-node approximation, we keep
+the nodal structure of the wave function ﬁxed while mod-
+ifying the electron-electron interaction.
+C. Conﬁguration Interaction Calculations
+The CI calculations are performed using the Monte
+Carlo conﬁguration interaction (MCCI) method [23,24].
+In a MCCI calculation, a coeﬃcient threshold cmin is de-
+ﬁned, conﬁgurations are randomly generated, and, after
+a variational calculation, coeﬃcients of magnitude be-
+low cmin are rejected. This procedure is repeated until
+a desired degree of convergence in the CI calculation is
+achieved. A full CI (FCI) calculation can be obtained for
+cmin = 0. The fact that the MCCI procedure does not
+rely on a pre-selection of CSF’s makes it well-suited for
+our study: the dynamical selection of conﬁgurations al-
+lows for rejection of CSF’s which may no longer be needed
+with the smooth electron interaction.
+For use in the CI approach, the pseudo-interaction Vps
+is represented (in Hartree atomic units) as a sum of the
+smooth function Verf plus nG Gaussian terms, as follows:
+Vps(r) = erf(r/rc)
+r
++
+nG
+X
+i=1
+ci exp(−dir2) .
+(3)
+This reproduces the 1/r tail of the Coulomb interaction
+and the smooth, ﬁnite form of the pseudo-interaction at
+short distances. The parameters ci and di are found by
+least-squares ﬁtting (for radii r < 3rc) to the numerical
+potential, generated as described in Appendix A.
+For
+the CI results presented below, the potential was ﬁtted
+using nG = 9. QMC calculations of the He atom energy
+with the numerical potential and with the ﬁtted potential
+show a negligible diﬀerence (less than 0.02 mHartree for
+all values of rc < 1 a.u.).
+Evaluation of the pseudo-interaction Vps(r) can be im-
+plemented in codes for Gaussian integral calculation since
+it is possible to compute the two-body matrix elements
+both of exp(−d r2) and erf(r/rc)/r in the CI basis. Ma-
+trix elements of the interaction erf(r/rc)/r for all s-type
+basis functions have already been given in Ref. [20]. For
+both types of interaction, a simple modiﬁcation to the
+integral codes is possible if the standard two-electron in-
+tegrals are calculated using the method of Rys quadra-
+ture [25]. Details of two-body integral evaluation with
+the modiﬁed form of the electron interaction are given in
+Appendix D.
+III. He AND Be ATOMIC ENERGIES WITH
+PSEUDO-INTERACTIONS
+To test the impact of the interelectron cusp on the en-
+ergy, we calculate the total energies of He and Be atoms,
+replacing the true 1/r electron interaction with the norm-
+conserving pseudo-interaction Vps(r), generated for var-
+ious values of the cut-oﬀradius rc.
+For comparison,
+we also present results for the smooth but not norm-
+conserving potential Verf(r) = erf(r/rc)/r. The results
+in this section are obtained from QMC and CI calcula-
+tions.
+A. Ground State of the He atom
+In Fig. 2, we show the singlet ground state energies of
+the He atom calculated with a norm-conserving electron-
+electron interaction Vps generated as in Sec. II, for various
+values of the cut-oﬀradius rc. The values obtained from
+QMC (exact) calculations are shown. We also plot the
+energies calculated using the Verf(r) interaction. The hor-
+izontal line indicates the exact energy E0 = −2.903724
+Hartree for the true Coulomb interaction [26].
+The calculated QMC energies for Vps and Verf in
+Fig. 2 are ﬁtted with polynomial expansions of the form:
+3
+
+Page 4 Text:
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+rc (a.u.)
+−2.96
+−2.94
+−2.92
+−2.90
+E (Hartree)
+Cuspless Ψ
+Vps interaction
+Verf interaction
+He
+FIG. 2.
+He atom ground state energy E as a function
+of cut-oﬀradius rc, obtained from DMC calculations using
+various forms of the electron-electron interaction:
+(a) the
+norm-conserving pseudo-interaction Vps (solid line); (b) the
+smooth interaction Verf (dashed line). The curves are poly-
+nomial ﬁts to the calculated DMC values, as discussed in the
+text. The horizontal line shows the exact value [26] for the He
+ground state. Also shown are variational energies, with the
+true Coulomb interaction, upon removal of the electron cusp
+(see Appendix C) from the wave function used in the DMC
+calculations (dotted line).
+E(rc) = E0 + ar2
+c + br3
+c + cr4
+c + dr5
+c + er6
+c. As discussed
+in Appendix B, any potential which diﬀers from the ex-
+act 1/r interaction would be expected, from ﬁrst order
+perturbation theory, to converge at least quadratically in
+rc to the exact energy E0 for small rc. Since Verf is not
+explicitly constructed to eliminate ﬁrst order errors in
+Verf(r) −1/r, quadratic convergence is seen for Verf and
+the ﬁtting parameters are: a = −0.3279, b = −0.3839,
+c = 0.6758, d = −0.2622, and e = 0.
+On the other
+hand, the norm-conserving pseudo-interaction construc-
+tion of Sec. II A explicitly ensures that the ﬁrst-order
+perturbation correction to the energy is zero. The He
+ground state energy as a function of rc using Vps can
+indeed be ﬁtted without the quadratic term, and even
+the cubic term proves to be small, the polynomial coef-
+ﬁcients being: a = 0, b = 0.0188, c = −0.1023, d = 0,
+and e = 0.0280.
+For He, the energies obtained using
+Vps(r) are within 1 mHartree of the energy computed
+with the true Coulomb interaction for values of rc < 0.4
+a.u. Since the typical electron-electron distance in the
+He ground state is of the order of 1 a.u., these results in-
+dicate that the ﬁrst peak of the electron pair-distribution
+function provides a good measure of how large a cut-oﬀ
+radius rc may be used to obtain accurate total energies
+with Vps(r): rc should be approximately half the radius
+at which this ﬁrst peak occurs. The same criterion for
+the largest allowed rc value was found to hold for other
+systems (not shown), viz. the He triplet state, the He
+isoelectronic series, and multi-electron atoms. In a qual-
+itative way, this condition is similar to the criterion used
+in the generation of electron-ion pseudopotentials, where
+the cut-oﬀradius is chosen to be inside the peak of the
+valence electron density.
+Also shown in Fig. 2 are the variational energies (with
+the true Coulomb electron-electron interaction) obtained
+for the He ground state by removing the electron cusps
+from the accurate trial wave function which was deter-
+mined by variance minimization for use in the DMC cal-
+culations, as speciﬁed in Eq. C1. This trial wave function
+includes considerable variational freedom in the interelec-
+tronic terms and obtains 100% of the correlation energy.
+As can be seen in Fig. 2, removal of the cusp out to radii
+of 0.5 a.u. causes little degradation of the quality of the
+energy obtained with this wave function. Thus the suc-
+cess of interelectronic terms in obtaining good variational
+energies is not primarily due to their description of the
+short-range cusp behaviour.
+This trend is further borne out when we look at
+the convergence of partial CI expansions within a given
+single-particle basis set for the MCCI method. The CI
+calculations were performed with the correlation consis-
+tent polarized valence double-zeta (cc-pVDZ), triple-zeta
+(cc-pVTZ), quadruple-zeta (cc-pVQZ) and quintuple-
+zeta (cc-pV5Z) basis sets of Dunning [27] with the elec-
+tron interaction Vps for various values of rc.
+All four
+basis sets show similar behaviour and we present only
+the cc-pVQZ results in detail. Table I shows the correla-
+tion energy obtained as a function of cut-oﬀradius rc for
+various values of the expansion coeﬃcient threshold cmin.
+The full CI result is obtained when cmin = 0.0. For larger
+values of the cut-oﬀradius rc (upper rows of table), the
+total correlation energy is smaller, as the variation of the
+interaction Vps becomes smaller around the typical sepa-
+ration distance of the electrons. However, the fraction of
+the correlation energy which is recovered at a given CI
+threshold level cmin depends little on the value of rc.
+Fig. 3 shows the number of CSF’s in the CI expan-
+sion as a function of cut-oﬀradius rc for various values
+of the expansion coeﬃcient threshold cmin. For values of
+cmin > 3 × 10−2, one is quickly reduced to a few CSF’s
+and ﬁnally to the Hartree-Fock solution. As with the cor-
+relation energies, for a given threshold cmin, the number
+of CSF’s shows relatively little change for values of rc be-
+tween 0 and 0.95. Again, it is worth bearing in mind that
+the typical electron-electron separation is 1 a.u. and that
+a cut-oﬀradius rc = 0.95 represents a very smooth inter-
+action. Thus, removal of electron cusps does not result
+in a signiﬁcant reduction in the number of contributing
+conﬁgurations in the CI expansion.
+We next demonstrate that removal of the electron cusp
+does not signiﬁcantly change the convergence properties
+of CI expansions as the highest angular momentum quan-
+tum number is increased in the single particle basis sets.
+In Fig. 4, FCI energies for He are displayed against in-
+creasing basis set size in the correlation consistent series
+from Dunning, and hence increasing angular momentum
+number in the basis. The convergence in the FCI energy
+4
+
+Page 5 Text:
+TABLE I. Calculated correlation energy for the He atom with a cc-pVQZ basis set, as a function of cut-oﬀradius rc
+and the CI coeﬃcient threshold cmin. The energy units are mHartree. The right-hand column (HF−QMC) shows the full
+correlation energy (i.e. the diﬀerence between the Hartree-Fock energy, calculated with this basis, and QMC (exact) energy).
+The percentages indicated are the fractions of the full CI correlation energy for each value of rc.
+rc
+cmin
+(a.u.)
+3 × 10−2
+2 × 10−2
+1 × 10−2
+1 × 10−3
+1 × 10−4
+0.0
+HF −QMC
+0.95
+2.15
+15.10
+12.98
+18.72
+18.96
+18.96
+19.56
+11.01%
+77.21%
+66.36%
+95.69%
+96.94%
+96.95%
+100.00%
+0.80
+6.09
+18.45
+16.93
+25.11
+25.16
+25.16
+25.76
+23.66%
+71.64%
+65.74%
+97.48%
+97.67%
+97.67%
+100.00%
+0.50
+8.64
+27.23
+32.79
+36.32
+36.32
+36.32
+37.18
+23.24%
+73.24%
+88.19%
+97.69%
+97.69%
+97.69%
+100.00%
+0.20
+14.07
+28.93
+35.27
+40.75
+40.75
+40.75
+41.93
+33.57%
+69.00%
+84.13%
+97.20%
+97.20%
+97.20%
+100.00%
+0.10
+9.37
+28.98
+35.35
+40.89
+40.89
+40.89
+42.18
+22.22%
+68.71%
+83.80%
+96.94%
+96.94%
+96.94%
+100.00%
+0.00
+27.44
+30.61
+36.09
+40.90
+40.90
+40.90
+42.21
+65.01%
+72.52%
+85.50%
+96.90%
+96.90%
+96.90%
+100.00%
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+rc (a.u.)
+0
+10
+20
+30
+40
+50
+60
+number of CSF’s
+cmin = 0.0001
+cmin = 0.001
+cmin = 0.01
+cmin = 0.02
+cmin = 0.03
+FIG. 3.
+The number of conﬁguration state functions
+(CSF) in the CI expansion for the He atom with the cc-pVQZ
+basis set as a function of rc. Results are presented for coeﬃ-
+cient thresholds cmin of 0.03, 0.02, 0.01, 0.001 and 0.0001.
+with increasing basis set size is compared for electron in-
+teraction Vps, with values of the cut-oﬀradius rc from 0
+to 0.8. Fitting these energies to a function similar to the
+asymptotic form derived in Ref. [2],
+E = E0 + a
+L3 + b
+L4 ,
+(4)
+where L is the maximum angular momentum in the basis,
+gives best values of a ≈0.038 and b ≈−0.022 for each
+value of rc ≤0.2 and gives a ≈0.02 and b ≈−0.01 for
+rc ≥0.5. Thus, the predominant 1/L3 convergence of the
+energy is present for all values of rc investigated here.
+Although the asymptotic form in Eq. 4 ﬁts the results
+1
+2
+3
+4
+L
+−2.93
+−2.92
+−2.91
+−2.90
+−2.89
+−2.88
+E (Hartree)
+rc = 0.0
+rc = 0.1
+rc = 0.2
+rc = 0.5
+rc = 0.8
+FIG. 4.
+Full CI energies E for the ground state He atom
+as a function of L, the maximum angular momentum in the
+basis set used, calculated using the electron interaction Vps
+with values of the cut-oﬀradius rc from 0 to 0.8.
+well, the parameters a and b do not have the asymptotic
+values, a = 0.025 and b = 0.008, found for the angular
+momentum convergence associated with the short-range
+cusp [3]. Two factors cause this discrepancy: (i) not only
+higher angular momentum functions are added as L is in-
+creased in the Dunning basis sets; (ii) more importantly,
+we are not near the asymptotic regime, where expansion
+of the short-range cusp would be the dominant energy
+correction.
+5
+
+Page 6 Text:
+0.0
+0.1
+0.2
+0.3
+0.4
+0.5
+rc (a.u.)
+−14.90
+−14.85
+−14.80
+−14.75
+−14.70
+−14.65
+E (Hartree)
+Cuspless Ψ
+Vps interaction
+Be
+FIG. 5.
+Be atom ground state energy E as a function of
+cut-oﬀradius rc, obtained from (a) DMC calculations using
+the norm-conserving pseudo-interaction Vps (solid line); (b)
+variational calculations using the true Coulomb interaction
+upon removal of the electron cusp from the trial wave function
+(see Appendix C) used in the DMC calculation (dashed line).
+B. Ground State of the Be atom
+The qualitative nature of the CI energy convergence
+seen in the previous section is not special to the He
+atom.
+Fig. 5 shows the DMC calculated ground state
+energies of Be for various cut-oﬀradii rc. Because of the
+much smaller radius of the 1s orbital in Be, compared to
+He, the energetically appropriate cut-oﬀradius rc for the
+pseudo-interaction is substantially smaller. Also shown
+in Fig. 5 are the variational energies obtained for the Be
+ground state by removing the electron cusps (as deﬁned
+in Eq. C1) from the accurate trial wave function which
+was determined by variance minimization for use in the
+DMC calculations. This trial wave function includes in-
+terelectronic terms and obtains 99.5% of the correlation
+energy. Removal of the cusp causes signiﬁcant degrada-
+tion of the quality of the wave function only for rc > 0.3
+atomic units, which is comparable to the typical sepa-
+ration of the 1s electrons.
+Thus, in Be, as in He, the
+success of interelectronic terms in obtaining good varia-
+tional energies is not primarily due to their description
+of the short-range cusp behaviour.
+CI calculations using basis sets with s- and p-functions
+(the TZP basis of Ahlrichs et al. [28]), s-, p- and d-
+functions (6-311g* [29]), s-, p-, d- and f-functions (the
+ANO basis of Widmark et al. [30]) and s-, p-, d-, f- and
+g-functions (i.e.
+the ANO basis, augmented with a g-
+function with exponent 1.2) were carried out. The values
+of the CI coeﬃcient threshold cmin were taken to be 10−2,
+10−3 and 10−4 for all basis sets. Calculations were car-
+ried out at cut-oﬀradii rc of 0 (i.e. Coulomb interaction),
+0.1 and 0.2 a.u.
+In Tables II and III we present the correlation energy
+for Be, obtained with the TZP and ANO basis sets, re-
+TABLE II.
+Calculated correlation energy, as a function of
+cut-oﬀradius rc and CI coeﬃcient threshold cmin, for the Be
+atom with the TZP basis set. All energies are in mHartree.
+The right-hand column shows the QMC correlation energy
+(i.e. the diﬀerence between the Hartree-Fock energy for this
+basis and the QMC energy) for each value of the cut-oﬀradius
+rc. The percentages indicated are the fractions of the QMC
+correlation energy for each value of rc.
+rc
+cmin
+(a.u.)
+1 × 10−2
+1 × 10−3
+1 × 10−4
+HF −QMC
+0.20
+51.63
+60.91
+61.61
+99.39
+51.94%
+61.28%
+61.99%
+100.00%
+0.10
+51.55
+60.81
+61.53
+95.01
+54.26%
+64.01%
+64.76%
+100.00%
+0.00
+56.42
+61.51
+62.01
+94.89
+59.46%
+64.82%
+65.35%
+100.00%
+TABLE III. Calculated correlation energy for the Be atom
+with the ANO basis set. The notation is the same as in Ta-
+ble II.
+rc
+cmin
+(a.u.)
+1 × 10−2
+1 × 10−3
+1 × 10−4
+HF −QMC
+0.20
+53.40
+71.35
+74.13
+90.39
+59.07%
+78.93%
+82.01%
+100.00%
+0.10
+42.54
+71.97
+74.80
+94.43
+45.05%
+76.22%
+79.21%
+100.00%
+0.00
+58.46
+72.30
+74.66
+93.91
+62.25%
+76.99%
+79.50%
+100.00%
+spectively. Fig. 6 shows the number of CSF’s as a func-
+tion of the cut-oﬀradius rc for various values of the CI
+coeﬃcient threshold cmin in the MCCI approach. We see
+that, especially at the higher levels of accuracy (i.e. small
+cmin), neither the fraction of the correlation energy ob-
+tained nor the number of CSF’s used depend strongly on
+the cut-oﬀradius rc. As we saw in the He atom, remov-
+ing the divergence of the Coulomb electron interaction
+does not substantially change the CI energy convergence
+at this level of accuracy.
+IV. CONCLUSIONS
+In this paper we have directly explored the eﬀect
+of the electron cusp on the convergence of the en-
+ergy for CI wave functions.
+To do so, we introduced
+a ﬁctitious electron-electron interaction which, unlike
+the true Coulomb potential, does not diverge at elec-
+tron coalescences and therefore has many-body eigen-
+functions which are smooth there. The smooth poten-
+tial is obtained by a method analogous to the well-
+established treatment of electron-ion interactions with
+6
+
+Page 7 Text:
+0
+0.1
+0.2
+rc (a.u.)
+1
+10
+10
+2
+10
+3
+10
+4
+number of CSF’s
+cmin = 0.0001
+cmin = 0.001
+cmin = 0.01
+TZP
+ANO
+FIG. 6.
+The number of conﬁguration state functions
+(CSF) in the CI expansion for the Be atom with TZP and
+ANO basis sets. Results are presented for coeﬃcient thresh-
+olds cmin of 0.01, 0.001 and 0.0001 at cut-oﬀradii rc of 0.0,
+0.1 and 0.2 a.u.
+smooth, norm-conserving pseudopotentials. These give
+scattering properties very similar to the true potential
+and improve the convergence of plane-wave expansions
+for single-particle wave functions. By analogy, one might
+expect that a similar treatment of the electron-electron
+interaction would improve the convergence of CI expan-
+sions.
+For the He and Be atoms, we have compared the CI
+expansions of wave functions for the true, Coulomb inter-
+action and for smooth pseudo-interactions between the
+electrons.
+We have also compared the variational en-
+ergies of highly accurate wave functions containing r12
+terms, where the cusp condition is exactly satisﬁed, with
+the energy for the same wave functions, from which the
+cusp has been deliberately removed out to a given radius.
+The main result of our study is that a description of
+the electron cusp as such is not a limiting factor in cal-
+culating correlation eﬀects with conﬁguration interaction
+methods at the mHartree level of accuracy. We are led
+to this conclusion since the replacement of the diver-
+gent Coulomb interaction with a ﬁnite interaction leaves
+the convergence properties largely unchanged. The slow
+convergence of CI expansions in this energy range must
+be attributed to medium-range correlations, which are
+present for both types of electron interaction. The results
+obtained by explicitly removing the cusp from accurate
+variational wave functions support this conclusion, show-
+ing that the cusp of the wave function is not energetically
+important. This is found, even when cusp-like behaviour
+is removed out to a distance of half the typical interelec-
+tronic separation.
+When describing correlation eﬀects with explicit r12
+methods, it is a mistaken notion to assign the improve-
+ment in convergence to their ability to describe the short-
+range cusp. Rather, the improvement in convergence at
+the mHartree level must be understood in terms of a
+better description of medium-range correlations when ex-
+pressed in interelectronic coordinates. This fact must be
+considered when developing theoretical treatments of the
+electronic correlation problem.
+V. ACKNOWLEDGMENTS
+We wish to thank D. R. Hamann for stimulating discus-
+sions. This work has been supported by Enterprise Ire-
+land Grant Number SC/98/748 and by the Irish Higher
+Education Authority.
+APPENDIX A: GENERATION OF ELECTRON
+PSEUDO-INTERACTIONS
+The procedure for constructing the electron pseudo-
+interaction Vps follows Hamann’s construction [19] of gen-
+eralised norm-conserving pseudopotentials for electron-
+ion scattering, with two modiﬁcations:
+(i) Only two
+particles are involved in the generation of the electron-
+electron pseudo-interaction, so that we do not need to in-
+clude screening potentials; (ii) because we are solving the
+scattering problem in the centre of mass frame of the elec-
+trons and use the relative coordinate r of the electrons,
+the mass of the electron is replaced by the reduced mass
+for the two-electron system. In Hartree atomic units, the
+interaction potential is V (r) = 1/r and the reduced mass
+is 1/2. The radial Schr¨odinger equation for the relative
+motion of two electrons is then
+−d2ul
+dr2 +
+l(l + 1)
+r2
++ (V −ǫl)
+
+ul = 0,
+(A1)
+where ul(r) is r times the wave function in the relative
+coordinates, with angular momentum l and energy ǫl (the
+kinetic energy of the separated electrons in the centre of
+mass frame).
+In the generation of a pseudopotential, the true po-
+tential and pseudopotential become identical outside a
+suitably chosen cut-oﬀradius rc and are constructed to
+have identical scattering phase shifts and energy deriva-
+tive of the phase shift at a reference energy ǫl. A smooth
+pseudo wave function ups(r) is generated numerically to
+ensure “norm-conservation”, i.e. ups(R∞) = ul(R∞) and
+Z R∞
+0
+ups(r)2dr =
+Z R∞
+0
+ul(r)2dr ,
+(A2)
+for all R∞>> rc. In practice, we choose R∞∼2.5rc,
+as in Ref. [19]. Given ups, a smooth, ﬁnite pseudopo-
+tential Vps is generated by inversion of the Schr¨odinger
+Eq. A1 for r < R∞, with ul and V substituted by ups and
+Vps, respectively. We follow the steps exactly as given in
+7
+
+Page 8 Text:
+Sec. II of Ref. [19], except where the reduced mass en-
+ters in the ﬁnal inversion, slightly modifying Eq. 12 of
+Hamann’s work.
+In the norm-conserving pseudopotential approach, dif-
+ferent scattering potentials are often generated for diﬀer-
+ent values of the angular momentum l. The full many-
+body wave function is anti-symmetric with respect to ex-
+change of any two electrons. Thus, if the two electrons
+have parallel spin, the orbital part of the wave function
+must have odd parity and the allowed angular momentum
+l must be odd. Thus, the dominant parallel-spin scat-
+tering has l = 1. For singlet (anti-parallel) scattering,
+the orbital part is symmetric and l must be even, with
+dominant allowed angular momentum l = 0. Following
+the usual pseudopotential approach, we might then ex-
+pect to generate a parallel-spin scattering potential using
+l = 1 and an anti-parallel-spin scattering potential using
+l = 0. In practice, we ﬁnd that the l = 0 potential gives
+good scattering for both angular momenta and the use
+of separate parallel- and anti-parallel-spin potentials is
+unnecessary.
+Since ǫl is positive, the wave function will oscillate for
+large r, and if a node occurs for r < R∞, the inver-
+sion of the Schr¨odinger equation will fail. Thus, the joint
+requirements, that rc be suﬃciently large to produce a
+smooth pseudo-interaction and that R∞
+>∼2.5rc, eﬀec-
+tively limit the maximum reference energy ǫl at which
+the pseudo-interaction construction is possible.
+We ﬁnd that the pseudo-interaction is transferable (i.e.
+has very similar scattering strength to the true interac-
+tion) for energies over a wide range about the reference
+energy ǫl, as found previously for electron-ion pseudopo-
+tentials. In particular, we ﬁnd that transferability is best
+for energies less than the reference energy at which the
+pseudopotential was generated. This would suggest that
+the best reference energy to use is the largest energy
+compatible with the procedure for inversion of the radial
+Schr¨odinger equation, a choice conﬁrmed by calculations
+of many-body eigenstates using pseudo-interaction po-
+tentials generated with diﬀerent values of the reference
+energy.
+APPENDIX B: FIRST ORDER PERTURBATION
+ANALYSIS OF PSEUDO-INTERACTIONS
+In this Appendix, we consider the ﬁrst-order error
+in the energy expected for a typical, arbitrary smooth
+electron-electron potential which is equal to the exact in-
+teraction 1/r outside some (adjustable) cut-oﬀradius rc.
+We will assume that the potential is (at least approxi-
+mately) of the form
+Vrc(r) =
+1
+rc
+U(r/rc)
+(B1)
+where U(r/rc) is some universal function independent
+of rc.
+Clearly both the true interaction 1/r and the
+smooth interaction Verf are of this form exactly.
+Vps
+is also approximately of this form. Thus, the diﬀerence
+∆V between the interaction Vrc(r) and the true electron-
+electron interaction 1/r is of the same form:
+∆V (r) =
+1
+rc
+∆U(r/rc),
+(B2)
+where ∆U(ρ) is zero for ρ > 1.
+Replacing the true electron-electron interaction with
+Vrc(r) then gives rise to a ﬁrst-order energy error:
+δǫ(1) = ⟨Ψ|∆V |Ψ⟩
+= ⟨Ψ|
+
+Vrc −1
+r
+
+|Ψ⟩,
+(B3)
+where |Ψ⟩is the eigenstate of the many-electron system.
+If P(r) is the electron pair distribution function (aver-
+aged at the pair separation distance r), the energy error
+may be rewritten as:
+δǫ(1) =
+Z ∞
+0
+P(r) 1
+rc
+∆U(r/rc)4πr2dr
+= r2
+c
+Z 1
+0
+P(rcρ)∆U(ρ)4πρ2dρ.
+(B4)
+If rc is suﬃciently small and the pair-distribution func-
+tion P(r) does not tend to zero at r = 0, then P(rcρ) may
+be replaced by P(0) in the integral and δǫ(1) ≈KP(0)r2
+c
+for small rc, where K is a constant for the type of inter-
+action, deﬁned by
+K ≡
+Z 1
+0
+∆U(ρ)4πρ2dρ.
+(B5)
+The construction of Vps ensures that the energy error
+is identically zero for the two-electron scattering at the
+reference energy, and therefore K = 0 for Vps. However,
+for an arbitrary smooth interaction (such as Verf), K will
+not be zero.
+APPENDIX C: SHORT-RANGE CORRELATION
+TERM OBTAINED FROM NORM-CONSERVING
+POTENTIAL
+In the generation of the norm-conserving potential dis-
+cussed in Appendix A, we obtained a pseudo wave func-
+tion ups(r), which is a solution to the radial Schr¨odinger
+equation at the scattering energy ǫl for the pseudo-
+interaction, and the wave function ul(r), which is the
+corresponding solution for the true Coulomb interaction.
+The ratio Jsr = ul/ups of these two functions has the
+correct electron cusp (i.e. logarithmic derivative of −1/4
+or −1/2 for parallel or anti-parallel spins, respectively, at
+r = 0) and tends rapidly to 1 for r > rc. This function Jsr
+may be said to contain the short-range cusp behaviour
+of the Coulomb scattering solution, since it represents
+8
+
+Page 9 Text:
+the diﬀerence between the scattering wave function for
+the divergent potential and that for the ﬁnite pseudo-
+interaction.
+Moreover, if Ψ(r1, . . . , rN) is a many-electron wave
+function (e.g. one which has inter-electronic coordinates
+rij explicitly included) with the correct electron cusps,
+the function
+Ψs = Ψ(r1, . . . , rN)/
+Y
+i<j
+Jsr(rij)
+(C1)
+is smooth at electron coalescences but has very similar
+electron correlations for rij > rc.
+The wave function
+Ψs has the electron cusp behaviour of the original wave
+function Ψ removed inside the cut-oﬀradius rc, but is
+otherwise the same as Ψ.
+Thus, the energy diﬀerence
+⟨Ψs|H|Ψs⟩−⟨Ψ|H|Ψ⟩is a good measure of the energy
+cost of removing the electron cusp behaviour for r <
+rc from a correlated wave function, while keeping other
+aspects of the wave function (e.g. any beneﬁts there may
+be to the inclusion of inter-electronic coordinates in the
+form of the trial function) unchanged.
+APPENDIX D: EVALUATION OF
+TWO-ELECTRON GAUSSIAN INTEGRALS
+WITH PSEUDO-INTERACTIONS
+In this Appendix, we give details of the evaluation of
+two-electron Gaussian basis set integrals for the electron
+interactions, Verf and Vps, and their incorporation into
+existing electron integral programs.
+For the interaction Verf, the necessary modiﬁcation of
+two-electron integrals for all s-type basis functions have
+been given by Savin [20].
+We do not use Savin’s ap-
+proach, but rather directly modify the Rys quadrature
+approach of Dupuis, Rys, and King [25], to obtain ma-
+trix elements for the interaction Verf in place of those for
+1/r12. To evaluate two-electron integrals for the pseudo-
+interaction Vps, we use the form given in Eq. 3. This in-
+volves the evaluation of integrals with the interaction Verf
+and a sum of Gaussian terms. In codes (e.g. the ARGOS
+code [31]) which use the Rys quadrature [25] approach for
+the evaluation of two-electron integrals with the Coulomb
+interaction, these Gaussian terms are already evaluated
+in an intermediate stage and may be used in the present
+context.
+Let us deﬁne two-electron integrals of the Coulomb
+interaction as
+(φiφj| 1
+r12
+|φkφl)
+≡
+Z Z
+φi(r1)φj(r1) 1
+r12
+φk(r2)φl(r2)dr1dr2 ,
+for Gaussian basis functions,
+φi(r) = exp(−ai|r −Ri|2)
+Y
+x,y,z
+(x −Xi)nxi .
+The Rys scheme represents the 1/r12 term in Gaussian
+integral form, to obtain:
+(φiφj| 1
+r12
+|φkφl) =
+2
+√π
+Z ∞
+0
+du(φiφj|exp(−u2r2
+12)|φkφl).
+(D1)
+This integral is then transformed to an integral over the
+variable t, where t2 = u2/(ρ + u2) and 1/ρ = 1/(ai +
+aj) + 1/(ak + al):
+(φiφj| 1
+r12
+|φkφl) =
+Z 1
+0
+PL(t) exp(−Xt2) dt ,
+(D2)
+where PL is a polynomial and X = ρ|rA −rB|2. Here,
+rA and rB are the usual weighted-average centers of the
+Gaussian orbital pairs (i, j) and (k, l), respectively, as
+given in Ref. [25]. The integration over t is then evaluated
+exactly by an n-point quadrature formula:
+(φiφj| 1
+r12
+|φkφl) =
+n
+X
+α=1
+PL(tα)Wα ,
+where tα(X) and Wα(X) are determined as in Ref. [25].
+We observe that the interaction Verf may be written
+in exactly the same form as in Eq. D1, replacing the
+upper limit of integration (u = ∞) with u = 1/rc. This
+changes the upper limit of integration in the variable t
+from 1 to tc = 1/
+p
+1 + ρr2c in Eq. D2. To use directly
+the Rys quadrature approach, we further transform to
+the variable t′ = t/tc, to obtain
+(φiφj|erf(r12/rc)
+r12
+|φkφl) = tc
+Z 1
+0
+PL(tct′) exp(−Xt2
+ct′2) dt′ ,
+which can be evaluated as,
+(φiφj|erf(r12/rc)
+r12
+|φkφl) =
+n
+X
+α=1
+PL(t′
+α)W ′
+α ,
+where the quadrature points t′
+α and weights W ′
+α are
+found by deﬁning X′ = Xt2
+c, t′
+α = tctα(X′), and W ′
+α =
+tcWα(X′).
+We can similarly evaluate the Gaussian terms in
+the representation of Vps.
+Deﬁning the integrand in
+Eq. D1, F(u) ≡(φiφj|exp(−u2r2
+12)|φkφl), we see that
+P PL(tα)Wα = P AαF(uα), where u2
+α/ρ = t2
+α/(1 −
+t2
+α) and Aα
+=
+(2/√π)[(ρ + u2)3/2/ρ] exp[Xu2/(ρ +
+u2)]Wα(X). One may directly modify this ﬁnite-point
+quadrature summation to evaluate two-electron integrals
+for the Gaussian terms, replacing n with nG, Aα with ci,
+and u2
+α with di. We have applied these modiﬁcations to
+the two-electron integrals within the ARGOS code, part
+of the COLUMBUS program package [31].
+9
+
+Page 10 Text:
+[1] B. Klahn and J.D. Morgan III, J. Chem. Phys. 81, 410
+(1984).
+[2] R. N. Hill, J. Chem. Phys. 83, 1173 (1985).
+[3] J. D. Morgan, in Numerical Determination of the Elec-
+tronic Structure of Atoms, Diatomic, and Polyatomic
+Molecules, edited by M. Defranceschi, and J. Delhalle
+(Kluwer Academic Publishers, Dordrecht, 1989) p. 49.
+[4] W. Kutzelnigg and W. Klopper, J. Chem. Phys. 94, 1985
+(1991).
+[5] W. Kutzelnigg and J. D. Morgan III, J. Chem. Phys. 96,
+4484, (1992).
+[6] M. Hoﬀmann-Ostenhoﬀ, T. Hoﬀman-Ostenhof, and H.
+Stremnitzer, Phys. Rev. Lett. 68, 3857 (1992).
+[7] T. Helgaker, W. Klopper, W. Koch, and J. Noga, J.
+Chem. Phys. 106, 9639 (1997).
+[8] T. Leininger, H. Stoll, H-J. Werner, and A. Savin, Chem.
+Phys. Lett. 275, 151 (1997).
+[9] M. Nooijen and R. J. Bartlett, J. Chem. Phys. 109, 8232
+(1998).
+[10] I. Silanes, J. M. Ugalde, and R. J. Boyd, J. Mol. Struct.
+(THEOCHEM), 527 27 (2000).
+[11] T. Kato, Commun. Pure Applied Math. 10, 151 (1957).
+[12] E. A. Hylleraas, Z. Phys. 51, 347 (1929).
+[13] R. Bukowski, B. Jeziorski, and K. Szalewiczi, J. Chem.
+Phys. 100, 1366, (1994).
+[14] J. D. Baker, D. E. Freund, R. N. Hill, and J. D. Morgan
+III, Phys. Rev. A 41, 1247 (1990).
+[15] T. L. Gilbert, Rev. Mod. Phys. 35, 491 (1963).
+[16] H. F. King, Theor. Chim. Acta 94, 345 (1996).
+[17] D. R. Hamann, M. Schl¨uter, and C. Chiang, Phys. Rev.
+Lett. 43, 1494 (1979).
+[18] W. E. Pickett, Comp. Phys. Rep. 9, 115 (1989).
+[19] D. R. Hamann, Phys. Rev. B 40, 2980 (1989).
+[20] A. Savin, in Recent Developments and Applications of
+Modern Density Functional Theory edited by J. M. Sem-
+inario (Elsevier, 1996) p. 327.
+[21] C. Filippi and C. J. Umrigar, J. Chem. Phys. 105, 213
+(1996).
+[22] C. J. Umrigar, K. G. Wilson, and J. W. Wilkins, Phys.
+Rev. Lett. 60, 1719 (1987).
+[23] J. C. Greer, J. Chem. Phys. 103, 1821 (1995).
+[24] J. C. Greer, J. Comp. Phys. 181, 146 (1998).
+[25] M. Dupuis, J. Rys, and H. F. King, J. Chem. Phys. 65,
+111 (1976).
+[26] E. R. Davidson, S. A. Hagstrom, S. J. Chakrvorty, V. M.
+Umar, and C. F. Fischer, Phys. Rev. A 44, 7071 (1991).
+[27] T. H. Dunning Jr., J. Chem. Phys. 90, 1007 (1989)
+[28] A. Schaefer, H. Horn, and R. Ahlrichs, J. Chem. Phys.
+97, 2571 (1992).
+[29] R. Krishnan, S. J. Binkley, R. Seeger, and J. A. Pople,
+J. Chem. Phys. 72, 650 (1980).
+[30] P. O. Widmark, P. A. Malmqvist, and B. O. Roos, Theor.
+Chim. Acta 77, 291 (1990).
+[31] R. Shepard, I. Shavitt, R. M. Pitzer, D. C. Comeau,
+M. Pepper, H. Lischka, P. G. Szalay, R. Ahlrichs, F. B.
+Brown, and J. Zhao, Int. J. Quant. Chem. Symp. 22, 149
+(1988).
+10
+
