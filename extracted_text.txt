@@ -208,13 +208,7 @@ coordinates.
 They include parameterized terms to de-
 scribe electron-nucleus, electron-electron and electron-
 electron-nucleus correlation, as follows:
-Ψ =
- X
-n
-dnD↑
-nD↓
-n
-!
+Ψ = Xn dnD↑ nD↓n!
 J(ri, rj, rij) .
 (1)
 D↑
