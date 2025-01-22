@@ -260,7 +260,4 @@ xlrd==2.0.1
 XlsxWriter==3.2.0
 xxhash==3.5.0
 yarl==1.18.3
-zipp==3.21.0
-pip==24.3.1
-setuptools==75.6.0
-wheel==0.45.1
+
