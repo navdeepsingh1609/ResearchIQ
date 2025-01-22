@@ -1,3 +1,4 @@
+import toml
 import time
 import os
 import shutil
@@ -331,15 +332,32 @@ def display_base64_img(img_data):
     return f"data:image/png;base64,{img_data}"
 
 # Step 0: Load the environment variables and initialize the Snowflake Connection
-load_dotenv()
-snowflake_account = os.getenv("SNOWFLAKE_ACCOUNT")
-snowflake_user = os.getenv("SNOWFLAKE_USER")
-snowflake_password = os.getenv("SNOWFLAKE_PASSWORD")
-snowflake_role = os.getenv("SNOWFLAKE_ROLE")
-snowflake_warehouse = os.getenv("SNOWFLAKE_WAREHOUSE")
-snowflake_database = os.getenv("SNOWFLAKE_DATABASE")
-snowflake_schema = os.getenv("SNOWFLAKE_SCHEMA")
-snowflake_username=os.getenv("SNOWFLAKE_USERNAME")
+# load_dotenv()
+# snowflake_account = os.getenv("SNOWFLAKE_ACCOUNT")
+# snowflake_user = os.getenv("SNOWFLAKE_USER")
+# snowflake_password = os.getenv("SNOWFLAKE_PASSWORD")
+# snowflake_role = os.getenv("SNOWFLAKE_ROLE")
+# snowflake_warehouse = os.getenv("SNOWFLAKE_WAREHOUSE")
+# snowflake_database = os.getenv("SNOWFLAKE_DATABASE")
+# snowflake_schema = os.getenv("SNOWFLAKE_SCHEMA")
+# snowflake_username=os.getenv("SNOWFLAKE_USERNAME")
+
+import toml  # Use `toml` for older Python versions
+
+# Load secrets from secrets.toml
+with open("secrets.toml", "r") as f:
+    secrets = toml.load(f)
+
+# Retrieve Snowflake configuration values
+snowflake_account = secrets.get("SNOWFLAKE_ACCOUNT")
+snowflake_user = secrets.get("SNOWFLAKE_USER")
+snowflake_password = secrets.get("SNOWFLAKE_PASSWORD")
+snowflake_role = secrets.get("SNOWFLAKE_ROLE")
+snowflake_warehouse = secrets.get("SNOWFLAKE_WAREHOUSE")
+snowflake_database = secrets.get("SNOWFLAKE_DATABASE")
+snowflake_schema = secrets.get("SNOWFLAKE_SCHEMA")
+snowflake_username = secrets.get("SNOWFLAKE_USERNAME")
+
 
 # Snowflake configuration
 snowflake_config = {
